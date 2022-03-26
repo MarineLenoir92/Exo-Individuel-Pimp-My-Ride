@@ -5,6 +5,9 @@ let trips =  [
     "Anita 16 3 7",
   ]
 
+let tripA = {'client': 'Roger', 'start': 0, 'duration': 5, 'price': 10};
+let tripB = {'client': 'Pongo', 'start': 3, 'duration': 7, 'price': 14};
+
 
 //split an array in multiple array//
 function parseTrip(trips){
@@ -48,6 +51,8 @@ console.log(array);
 return array;
 }
 
+
+
 // Extract specific keys values from array of object as new array//
 function getPrices(array){
 let sum = 0;
@@ -66,9 +71,21 @@ return sum;
 
 
 
+function checkComptability(tripA, tripB){
+  if (tripA.start + tripA.duration < tripB.start) {
+    console.log("True");
+    return true
+  }
+  else{
+    console.log("False");
+    return false
+  }
+}
+
 
 
 
 let [clientUn, clientTwo, clientThree, clientFour] = parseTrip(trips);
 let array = parseTrips(clientUn, clientTwo, clientThree, clientFour);
 let sum = getPrices(array)
+checkComptability(tripA, tripB)
