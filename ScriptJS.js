@@ -5,6 +5,7 @@ let trips =  [
     "Anita 16 3 7",
   ]
 
+
 //split an array in multiple array//
 function parseTrip(trips){
 
@@ -19,24 +20,55 @@ function parseTrip(trips){
     
     let clientFour = trips.slice(3,4).toString().split(" ");
     console.log(clientFour);
-
+     
+   
 //return multiple values//
 return[clientUn, clientTwo, clientThree, clientFour]
 }
 
 
+
 function parseTrips(clientUn, clientTwo, clientThree, clientFour){
 
+//value of the future array of objects//
 let clients = [clientUn, clientTwo, clientThree, clientFour]
+//keys of the future array of objects//
 let keys = ["client", "start", "duration", "price"];
-let object = {};
+let array = [];
 
+//for loop => create array of objects//
 for (i=0; i<clients.length; i++){
+let object = {};
 keys.forEach((element, index) => (object[element] = clients[i][index]));
 console.log(object);
+array.push(object);
 }
+
+console.log(array);
+return array;
 }
+
+// Extract specific keys values from array of object as new array//
+function getPrices(array){
+let sum = 0;
+let i = 0;
+
+let travelPrices = array.map( (extractprices) => parseInt(extractprices.price))
+console.log(travelPrices);
+
+// Find the sum of the array//
+for(i; i<travelPrices.length; i++){
+  sum += travelPrices[i];
+}
+console.log(sum);
+return sum;
+}
+
+
+
+
 
 
 let [clientUn, clientTwo, clientThree, clientFour] = parseTrip(trips);
-parseTrips(clientUn, clientTwo, clientThree, clientFour);
+let array = parseTrips(clientUn, clientTwo, clientThree, clientFour);
+let sum = getPrices(array)
